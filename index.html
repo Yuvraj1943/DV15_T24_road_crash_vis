@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Road Crash Hospitalisations in Australia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-brand">BITRE Road Crash Data · Australia 2011–2021</div>
+    <ul class="nav-links">
+      <li><a href="#section-trend">Trend</a></li>
+      <li><a href="#section-states">States</a></li>
+      <li><a href="#section-who">Who Gets Hurt</a></li>
+      <li><a href="#section-firstnations">First Nations</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg-lines"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Australian Road Safety · Hospitalised Injuries</p>
+      <h1 class="hero-title">Who Gets Hurt<br>on Australian Roads?</h1>
+      <p class="hero-sub">Over 400,000 people were hospitalised from road crashes between 2011 and 2021.
+        This story explores who bears the heaviest burden — and whether it's getting better.</p>
+      <a href="#section-trend" class="hero-cta">Explore the data ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num" id="stat-total">411,884</span>
+        <span class="stat-label">Total hospitalisations<br>2011–2021</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">16%</span>
+        <span class="stat-label">Rise from 2011 to<br>peak in 2019</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">2×</span>
+        <span class="stat-label">Males vs females<br>injured</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">90%</span>
+        <span class="stat-label">First Nations injury<br>rise 2011→2021</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: NATIONAL TREND -->
+  <section class="viz-section" id="section-trend">
+    <div class="section-header">
+      <span class="section-tag">01 / National Trend</span>
+      <h2>Hospitalisations have been rising — with two sharp breaks in the data</h2>
+      <p class="section-desc">The national count grew from 34,033 in 2011 to a peak of 39,866 in 2019 before dipping during COVID-19 in 2020. Note: breaks in 2012 (Victoria) and 2017 (NSW) reflect changes in hospital admission policies, not genuine decreases in crashes.</p>
+    </div>
+    <div class="chart-container" id="chart-trend"></div>
+    <div class="chart-annotation">
+      <div class="anno anno-vic">⚠ 2012: Victoria changed ED admission policy — counts dropped ~5.6% nationally</div>
+      <div class="anno anno-nsw">⚠ 2017: NSW changed ED admission policy — further reduction in counts</div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: STATES -->
+  <section class="viz-section alt-bg" id="section-states">
+    <div class="section-header">
+      <span class="section-tag">02 / State & Territory</span>
+      <h2>Victoria and Queensland surged while NSW declined</h2>
+      <p class="section-desc">Raw counts favour populous states, but the trends reveal different stories. Victoria climbed from 9,326 to 11,130; Queensland nearly doubled from 6,322 to 10,447. Use the toggle to compare states. <strong>Note:</strong> raw counts are not population-adjusted — the NT's smaller numbers reflect smaller population, not safer roads.</p>
+    </div>
+    <div class="controls">
+      <label class="ctrl-label">Select states to compare:</label>
+      <div class="state-toggles" id="state-toggles"></div>
+    </div>
+    <div class="chart-container" id="chart-states"></div>
+  </section>
+
+  <!-- SECTION 3: WHO GETS HURT -->
+  <section class="viz-section" id="section-who">
+    <div class="section-header">
+      <span class="section-tag">03 / Demographics</span>
+      <h2>Males, middle-aged adults, and motorcyclists bear the greatest burden</h2>
+      <p class="section-desc">In every year on record, males outnumbered females by roughly 2:1. The 40–64 age group consistently accounts for the highest absolute count. Among road users, car drivers top the list — but motorcyclists are vastly overrepresented relative to their share of road use.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-panel">
+        <h3 class="panel-title">By Age Group (select year)</h3>
+        <div class="controls">
+          <label class="ctrl-label">Year: <span id="year-label">2021</span></label>
+          <input type="range" id="year-slider" min="2011" max="2021" value="2021" step="1" class="slider" />
+        </div>
+        <div class="chart-container short" id="chart-age"></div>
+      </div>
+      <div class="who-panel">
+        <h3 class="panel-title">By Road User Type (2011–2021 total)</h3>
+        <div class="chart-container short" id="chart-roaduser"></div>
+      </div>
+    </div>
+    <div class="who-panel full-width-panel">
+      <h3 class="panel-title">Male vs Female hospitalisations over time</h3>
+      <div class="chart-container short" id="chart-sex"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: FIRST NATIONS -->
+  <section class="viz-section alt-bg" id="section-firstnations">
+    <div class="section-header">
+      <span class="section-tag">04 / First Nations People</span>
+      <h2>A widening and alarming disparity</h2>
+      <p class="section-desc">First Nations hospitalisations grew from 1,167 in 2011 to 2,290 in 2020 — a <strong>~96% increase</strong>, while non-Indigenous counts remained relatively stable. First Nations people make up approximately 3.2% of Australia's population yet accounted for ~5.6% of all road crash hospitalisations in 2021. This disparity demands urgent policy attention.</p>
+    </div>
+    <div class="chart-container" id="chart-fn"></div>
+    <div class="fn-callout">
+      <div class="callout-box">
+        <span class="callout-num">5.6%</span>
+        <span class="callout-text">share of hospitalisations for ~3.2% of population in 2021</span>
+      </div>
+      <div class="callout-box highlight">
+        <span class="callout-num">+90%</span>
+        <span class="callout-text">rise in First Nations hospitalisations from 2011 to 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Data source: Bureau of Infrastructure and Transport Research Economics (BITRE), <em>Hospitalised injuries from road crashes</em>, September 2023 release. Data covers calendar years 2011–2021.</p>
+    <p>Built with D3.js v7 · COS30045 Data Visualisation · Swinburne University of Technology</p>
+    <p class="data-caveat">⚠ Raw counts are not population-adjusted. Comparisons across jurisdictions and population groups should account for differences in population size.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="charts.js"></script>
+</body>
+</html>

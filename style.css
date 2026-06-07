@@ -1,0 +1,362 @@
+/* ============================================================
+   STYLE.CSS — Road Crash Hospitalisations in Australia
+   COS30045 Data Visualisation Project
+   ============================================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --bg:          #0d1117;
+  --bg-alt:      #111820;
+  --surface:     #161d27;
+  --border:      #1e2d3d;
+  --text:        #e6edf3;
+  --text-muted:  #8b949e;
+  --accent:      #e85d4a;
+  --accent2:     #f4a261;
+  --accent3:     #52b788;
+  --accent4:     #4cc9f0;
+  --accent5:     #c77dff;
+  --fn-color:    #e85d4a;
+  --nonindig:    #4cc9f0;
+  --font-head:   'Syne', sans-serif;
+  --font-body:   'DM Sans', sans-serif;
+  --radius:      12px;
+  --transition:  0.25s ease;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 56px;
+  background: rgba(13,17,23,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7rem 2.5rem 3rem;
+  overflow: hidden;
+}
+.hero-bg-lines {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(30,45,61,0.35) 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(30,45,61,0.2) 80px
+    );
+  pointer-events: none;
+}
+.hero-content {
+  max-width: 760px;
+  animation: fadeUp 0.9s ease both;
+}
+.hero-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: var(--font-head);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.hero-cta {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: background var(--transition), transform var(--transition);
+}
+.hero-cta:hover { background: #c9453a; transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1.1s 0.2s ease both;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  min-width: 140px;
+}
+.stat-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ── Sections ── */
+.viz-section {
+  padding: 6rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.viz-section.alt-bg {
+  max-width: 100%;
+  background: var(--bg-alt);
+  padding: 6rem 2.5rem;
+}
+.viz-section.alt-bg > * { max-width: 1150px; margin-left: auto; margin-right: auto; }
+
+.section-header { margin-bottom: 2.5rem; }
+.section-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.viz-section h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.section-desc {
+  color: var(--text-muted);
+  max-width: 780px;
+  font-size: 0.95rem;
+}
+
+/* ── Chart containers ── */
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 100%;
+  min-height: 380px;
+}
+.chart-container.short { min-height: 280px; }
+
+/* ── Controls ── */
+.controls {
+  display: flex; align-items: center; gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.ctrl-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.state-toggles { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.state-btn {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.state-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 220px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+/* ── Chart annotations ── */
+.chart-annotation {
+  display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap;
+}
+.anno {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 0.4rem 0.8rem;
+  border-left: 3px solid var(--accent2);
+  background: rgba(244,162,97,0.07);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Who Grid ── */
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.who-panel h3.panel-title {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.full-width-panel { grid-column: 1 / -1; }
+
+/* ── First Nations ── */
+.fn-callout {
+  display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;
+}
+.callout-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.75rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  flex: 1; min-width: 200px;
+}
+.callout-box.highlight { border-color: var(--fn-color); }
+.callout-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--fn-color);
+}
+.callout-text { font-size: 0.83rem; color: var(--text-muted); }
+
+/* ── Footer ── */
+.site-footer {
+  background: #080c10;
+  border-top: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.data-caveat { color: var(--accent2); margin-top: 0.5rem; }
+
+/* ── D3 Elements ── */
+.axis text { fill: var(--text-muted); font-family: var(--font-body); font-size: 11px; }
+.axis path, .axis line { stroke: var(--border); }
+.grid line { stroke: var(--border); stroke-dasharray: 2,3; opacity: 0.6; }
+.grid path { stroke-width: 0; }
+
+.tooltip {
+  position: absolute;
+  background: #1a2535;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 999;
+  line-height: 1.5;
+}
+.tooltip strong { color: var(--accent); font-family: var(--font-head); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .who-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 0.75rem; }
+  .viz-section { padding: 4rem 1.25rem; }
+  .navbar { padding: 0 1rem; }
+  .nav-links { gap: 1rem; }
+}
