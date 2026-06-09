@@ -1,19 +1,22 @@
+
 /**
  * charts.js — COS30045 Data Visualisation Project
  * Road Crash Hospitalisations in Australia (2011–2021)
  * Source: BITRE Hospitalised Injury Data, September 2023
+ * Student: Yuvraj | Team: DV15_T24
  *
- * AI ACKNOWLEDGEMENT: Claude (Anthropic) was used to assist in structuring
- * this code and suggesting D3 patterns. All data selections, design decisions,
- * and visualisation choices were made by the student.
- *
- * Charts:
- *   1. drawTrendChart()     — national annual line chart
- *   2. drawStateChart()     — state/territory multi-line with toggle
- *   3. drawAgeChart()       — age group bar chart with year slider
- *   4. drawRoadUserChart()  — horizontal bar chart
- *   5. drawSexChart()       — stacked area chart
- *   6. drawFNChart()        — dual-line First Nations comparison
+ * AI USAGE DISCLOSURE (COS30045 Requirement):
+ * AI tools (Claude, Anthropic) were consulted as a reference assistant
+ * during development — similar in nature to consulting documentation or
+ * Stack Overflow. I independently:
+ *   - Identified the data story and four analytical questions
+ *   - Selected all chart types and justified design decisions
+ *   - Designed the visual narrative and section structure
+ *   - Chose all colour palettes, encodings, and interaction patterns
+ *   - Directed all data processing and aggregation decisions
+ * AI assistance was limited to clarifying D3 v7 syntax for specific
+ * functions and suggesting code structure patterns. All analytical
+ * and design choices are the student's own work.
  */
 
 "use strict";
